@@ -1,4 +1,5 @@
 export const KoreanAlphabet = [
-  { english: "n", korean: "ㄴ" },
-  { english: "g", korean: "ㄱ" },
+  { id: 0, english: "n", korean: "ㄴ", memorized: false },
+  { id: 1, english: "g", korean: "ㄱ", memorized: false },
+  { id: 2, english: "d", korean: "ㄷ", memorized: false },
 ]
