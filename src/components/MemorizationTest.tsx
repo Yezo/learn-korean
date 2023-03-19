@@ -38,8 +38,8 @@ export default function MemorizationTest({
       <div className="flex gap-4 my-4">
         <Button handleClick={handleResetIndex} action="Reset" />
       </div>
-      {/* <div>Index: {index}</div>
-      <div>Status: {completed ? "completed" : "not completed"}</div> */}
+      <div>Index: {index}</div>
+      <div>Status: {completed ? "completed" : "not completed"}</div>
     </div>
   )
 }

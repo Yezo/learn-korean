@@ -12,13 +12,13 @@ export default function Card({ alphabet, index }: Props) {
       <Counter alphabet={alphabet} index={index} />
 
       <div className="flex items-center justify-between">
-        <div className="uppercase font-bold text-2xl ring-1 ring-black/20 shadow-sm bg-tertiary px-5 py-4 min-w-[4rem] rounded-lg grid place-items-center">
+        <div className="uppercase font-bold text-2xl ring-1 ring-black/20 shadow-sm bg-tertiary px-5 py-4 min-w-[5.5rem] rounded-lg grid place-items-center">
           {alphabet[index].english}
         </div>
 
         <BilateralArrowSVG />
 
-        <div className="uppercase font-bold text-2xl ring-1 ring-black/20 shadow-sm bg-tertiary px-5 py-4 min-w-[4rem] rounded-lg grid place-items-center">
+        <div className="uppercase font-bold text-2xl ring-1 ring-black/20 shadow-sm bg-tertiary px-5 py-4 min-w-[5.5rem] rounded-lg grid place-items-center">
           {alphabet[index].korean}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { KoreanAlphabet } from "./data/Korean"
 import MemorizationTest from "./components/MemorizationTest"
-import ConfettiExplosion from "react-confetti-explosion"
+import CompletionMessage from "./components/CompletionMessage"
 
 export default function App() {
   const [index, setIndex] = useState<number>(0)
@@ -81,12 +81,7 @@ export default function App() {
   return (
     <main className="bg-primary min-h-screen text-white grid place-items-center">
       {completed ? (
-        <>
-          <div className="grid place-items-center">
-            Congratulations, you've learnt the Korean alphabet!
-            <ConfettiExplosion />
-          </div>
-        </>
+        <CompletionMessage />
       ) : (
         <MemorizationTest
           alphabet={alphabet}
