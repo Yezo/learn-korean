@@ -8,7 +8,7 @@ type Props = {
 
 export default function Card({ alphabet, index }: Props) {
   return (
-    <div className="bg-secondary ring-1 ring-black/20 shadow-sm rounded px-8 py-10 font-primary flex flex-col gap-4">
+    <div className="bg-secondary ring-1 ring-black/20 shadow-sm rounded px-4 py-10 font-primary flex flex-col gap-4">
       <Counter alphabet={alphabet} index={index} />
 
       <div className="flex items-center justify-between">

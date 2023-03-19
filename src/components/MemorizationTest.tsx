@@ -30,16 +30,56 @@ export default function MemorizationTest({
         "NOTFOUND OR COMPLETED"
       )}
       <div className="flex gap-4 my-4">
-        <Button handleClick={handleDecrementIndex} action="Previous" />
-        <Button handleClick={handleMemorizeIndex} action="Memorized" />
-        <Button handleClick={handleIncrementIndex} action="Next" />
+        <Button handleClick={handleDecrementIndex}>
+          <LeftChevronSVG />
+        </Button>
+        <Button handleClick={handleMemorizeIndex}>Memorized</Button>
+        <Button handleClick={handleIncrementIndex}>
+          <RightChevronSVG />
+        </Button>
       </div>
 
       <div className="flex gap-4 my-4">
-        <Button handleClick={handleResetIndex} action="Reset" />
+        <Button handleClick={handleResetIndex}>Reset </Button>
       </div>
-      <div>Index: {index}</div>
-      <div>Status: {completed ? "completed" : "not completed"}</div>
     </div>
+  )
+}
+
+const LeftChevronSVG = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="11 17 6 12 11 7"></polyline>
+      <polyline points="18 17 13 12 18 7"></polyline>
+    </svg>
+  )
+}
+
+const RightChevronSVG = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="13 17 18 12 13 7"></polyline>
+      <polyline points="6 17 11 12 6 7"></polyline>
+    </svg>
   )
 }
