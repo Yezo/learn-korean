@@ -1,5 +1,6 @@
 import { Alphabet } from "../data/Korean"
-import { Card } from "./Card"
+import Button from "./Button"
+import Card from "./Card"
 
 type Props = {
   handleMemorizeIndex: () => void
@@ -19,43 +20,26 @@ export default function MemorizationTest({
   handleMemorizeIndex,
   handleDecrementIndex,
   handleIncrementIndex,
-  handleIndexCount,
   handleResetIndex,
 }: Props) {
   return (
-    <>
-      <div className="text-center my-4 font-bold">{`Currently: ${handleIndexCount()}`}</div>
+    <div>
       {alphabet[index] && !completed ? (
-        <Card engLetter={alphabet[index].english} korLetter={alphabet[index].korean} />
+        <Card alphabet={alphabet} index={index} />
       ) : (
         "NOTFOUND OR COMPLETED"
       )}
       <div className="flex gap-4 my-4">
-        <div>
-          <button onClick={handleIncrementIndex} className="bg-[#24273D] p-4 font-bold">
-            Increment
-          </button>
-        </div>
-        <div>
-          <button onClick={handleDecrementIndex} className="bg-[#24273D] p-4 font-bold">
-            Decrement
-          </button>
-        </div>
+        <Button handleClick={handleDecrementIndex} action="Previous" />
+        <Button handleClick={handleMemorizeIndex} action="Memorized" />
+        <Button handleClick={handleIncrementIndex} action="Next" />
       </div>
+
       <div className="flex gap-4 my-4">
-        <div>
-          <button onClick={handleResetIndex} className="bg-[#24273D] p-4">
-            Reset
-          </button>
-        </div>
-        <div>
-          <button onClick={handleMemorizeIndex} className="bg-[#24273D] p-4">
-            Memorized
-          </button>
-        </div>
+        <Button handleClick={handleResetIndex} action="Reset" />
       </div>
-      <div>Index: {index}</div>
-      <div>Status: {completed ? "completed" : "not completed"}</div>
-    </>
+      {/* <div>Index: {index}</div>
+      <div>Status: {completed ? "completed" : "not completed"}</div> */}
+    </div>
   )
 }

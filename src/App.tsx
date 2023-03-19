@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { KoreanAlphabet } from "./data/Korean"
-import { Card } from "./components/Card"
 import MemorizationTest from "./components/MemorizationTest"
+import ConfettiExplosion from "react-confetti-explosion"
 
 export default function App() {
   const [index, setIndex] = useState<number>(0)
@@ -10,9 +10,9 @@ export default function App() {
 
   // DONE There should be a button that lets the user remove an entry after they finish memorizing it
   // DONE User should not be able to decrement the index to lessn than 0 or higher than alphabet length
-  // TODO User should be congratulated after memorizing the entire alphabet (confetti?)
+  // DONE User should be congratulated after memorizing the entire alphabet (confetti?)
   // TODO Toggle to let users see hints or not
-  // TODO Toggle to let users see the full lsit of alphabet letters
+  // TODO Toggle to let users see the full list of alphabet letters
   // TODO Add images to hints?
   // TODO Debounce the increment/decrementing if clicking too fast ends up causing bugs?
   // TODO fix UI; maybe use headlessUI and learn MUI or something
@@ -44,7 +44,10 @@ export default function App() {
       })
     }
   }
-  const handleResetIndex = () => setIndex(0)
+  const handleResetIndex = () => {
+    setIndex(0)
+    setAlphabet(KoreanAlphabet)
+  }
 
   const handleMemorizeIndex = () => {
     // Filter the alphabet array for all items except for the displayed letter that the user has memorized, and returns the rest of the items. If there is 1 or more items left remaining, return them, otherwise set the alphabet array to empty and mark the game as completed
@@ -76,9 +79,14 @@ export default function App() {
   }
 
   return (
-    <main className="bg-[#181824] min-h-screen text-white grid place-items-center">
+    <main className="bg-primary min-h-screen text-white grid place-items-center">
       {completed ? (
-        <div>Congratulations, you've completed the game.</div>
+        <>
+          <div className="grid place-items-center">
+            Congratulations, you've learnt the Korean alphabet!
+            <ConfettiExplosion />
+          </div>
+        </>
       ) : (
         <MemorizationTest
           alphabet={alphabet}
@@ -91,15 +99,6 @@ export default function App() {
           handleResetIndex={handleResetIndex}
         />
       )}
-
-      <div>
-        <h2>Alphabet</h2>
-        {alphabet.map((item, index) => (
-          <div key={item.id}>
-            {item.id} - {item.english}
-          </div>
-        ))}
-      </div>
     </main>
   )
 }
