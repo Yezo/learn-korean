@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .round {
+    @apply ring-1 ring-black/20 shadow-sm rounded-3xl;
+  }
+}
