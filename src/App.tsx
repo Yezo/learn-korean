@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { KoreanAlphabet } from "./data/Korean"
 import MemorizationTest from "./components/MemorizationTest"
 import CompletionMessage from "./components/CompletionMessage"
+import Button from "./components/Button"
+import { getAlphabet, saveAlphabet } from "./utils/Storage"
 
 export default function App() {
   const [index, setIndex] = useState<number>(0)
@@ -47,6 +49,7 @@ export default function App() {
   const handleResetIndex = () => {
     setIndex(0)
     setAlphabet(KoreanAlphabet)
+    saveAlphabet(KoreanAlphabet)
   }
 
   const handleMemorizeIndex = () => {
@@ -55,6 +58,7 @@ export default function App() {
     let filtered = alphabet.filter(({ id }) => id !== currentItem.id)
     if (filtered.length > 0) {
       setAlphabet([...filtered])
+      saveAlphabet([...filtered])
     }
     if (filtered.length === 0) {
       setAlphabet([])
@@ -78,10 +82,20 @@ export default function App() {
     }
   }
 
+  useEffect(() => {
+    const alphabets = getAlphabet()
+    setAlphabet(alphabets)
+  }, [index])
+
   return (
     <main className="bg-primary min-h-screen text-white grid place-items-center">
       {completed ? (
-        <CompletionMessage />
+        <>
+          <CompletionMessage />
+          <div className="flex gap-4 my-4">
+            <Button handleClick={handleResetIndex}>Reset </Button>
+          </div>
+        </>
       ) : (
         <MemorizationTest
           alphabet={alphabet}
