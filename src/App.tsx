@@ -82,10 +82,11 @@ export default function App() {
     }
   }
 
+  //Set the new list of letters to local storage whenever a user memorizes a letter
   useEffect(() => {
     const alphabets = getAlphabet()
     setAlphabet(alphabets)
-  }, [index])
+  }, [handleMemorizeIndex])
 
   return (
     <main className="bg-primary min-h-screen text-white grid place-items-center">
@@ -93,7 +94,7 @@ export default function App() {
         <>
           <CompletionMessage />
           <div className="flex gap-4 my-4">
-            <Button handleClick={handleResetIndex}>Reset </Button>
+            <Button handleClick={handleResetIndex}>Reset</Button>
           </div>
         </>
       ) : (
